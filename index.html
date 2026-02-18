@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Catálogo</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+}
+
+header{
+  text-align:center;
+  padding:20px;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.catalogo{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:#ffffff10;
+  backdrop-filter: blur(10px);
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+  transition:0.3s;
+  box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h3{
+  margin-top:0;
+}
+
+.lista-precios{
+  margin-top:10px;
+}
+
+.item-bateria{
+  background:#ffffff15;
+  padding:10px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:8px;
+}
+
+.modelo{
+  font-size:14px;
+}
+
+.precio{
+  font-size:18px;
+  font-weight:bold;
+  color:#00ffae;
+}
+
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  margin-top:10px;
+  transition:0.3s;
+}
+
+.ver{
+  background:#00c6ff;
+  color:white;
+}
+
+.ver:hover{
+  background:#0099cc;
+}
+
+.consultar{
+  background:#25D366;
+  color:white;
+}
+
+.consultar:hover{
+  background:#1ebe5d;
+}
+
+.detalle{
+  display:none;
+  padding:20px;
+  max-width:800px;
+  margin:auto;
+}
+
+.volver{
+  background:#ff4b4b;
+  color:white;
+}
+
+@media(max-width:600px){
+  header{
+    font-size:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>Mi Catálogo</header>
+
+<div id="catalogo" class="catalogo">
+
+  <div class="card">
+    <h3>BATERIAS 12X65</h3>
+
+    <div class="lista-precios">
+      <div class="item-bateria">
+        <span class="modelo">Moura 12x65 M20GD</span>
+        <span class="precio">$100.000</span>
+      </div>
+    </div>
+
+    <button class="ver" onclick="mostrarDetalle('p1')">Ver más</button>
+  </div>
+
+  <div class="card">
+    <h3>Producto 2</h3>
+    <p>Breve descripción del producto.</p>
+    <button class="ver" onclick="mostrarDetalle('p2')">Ver más</button>
+  </div>
+
+  <div class="card">
+    <h3>Producto 3</h3>
+    <p>Breve descripción del producto.</p>
+    <button class="ver" onclick="mostrarDetalle('p3')">Ver más</button>
+  </div>
+
+</div>
+
+<!-- DETALLES -->
+
+<div id="p1" class="detalle">
+  <h2>BATERIAS 12X65</h2>
+  <p>Batería Moura modelo 12x65 M20GD. Ideal para vehículos que requieren alto rendimiento y durabilidad.</p>
+  <p><strong>Precio: $100.000</strong></p>
+
+  <a href="https://wa.me/5491124826449?text=hola,%20me%20interesa%20la%20publicacion" target="_blank">
+    <button class="consultar">Consultar por WhatsApp</button>
+  </a>
+  <br><br>
+  <button class="volver" onclick="volver()">Volver</button>
+</div>
+
+<div id="p2" class="detalle">
+  <h2>Producto 2</h2>
+  <p>Aquí va la información completa del producto 2.</p>
+  <a href="https://wa.me/5491124826449?text=hola,%20me%20interesa%20la%20publicacion" target="_blank">
+    <button class="consultar">Consultar por WhatsApp</button>
+  </a>
+  <br><br>
+  <button class="volver" onclick="volver()">Volver</button>
+</div>
+
+<div id="p3" class="detalle">
+  <h2>Producto 3</h2>
+  <p>Aquí va la información completa del producto 3.</p>
+  <a href="https://wa.me/5491124826449?text=hola,%20me%20interesa%20la%20publicacion" target="_blank">
+    <button class="consultar">Consultar por WhatsApp</button>
+  </a>
+  <br><br>
+  <button class="volver" onclick="volver()">Volver</button>
+</div>
+
+<script>
+function mostrarDetalle(id){
+  document.getElementById("catalogo").style.display="none";
+  document.getElementById(id).style.display="block";
+}
+
+function volver(){
+  document.querySelectorAll(".detalle").forEach(d => d.style.display="none");
+  document.getElementById("catalogo").style.display="grid";
+}
+</script>
+
+</body>
+</html>
